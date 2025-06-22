@@ -10,13 +10,9 @@ const LoginContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, 
-    ${CSIColors.primary.dark} 0%, 
-    ${CSIColors.primary.main} 25%, 
-    ${CSIColors.secondary.dark} 50%, 
-    ${CSIColors.secondary.main} 75%, 
-    ${CSIColors.accent.gold} 100%
-  );
+  background: 
+    linear-gradient(rgba(27, 54, 92, 0.6), rgba(200, 16, 46, 0.4)),
+    url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2864&q=80') center/cover;
   position: relative;
   overflow: hidden;
 
@@ -28,23 +24,25 @@ const LoginContainer = styled.div`
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 80%, ${CSIColors.primary.main}40 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, ${CSIColors.secondary.main}40 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, ${CSIColors.accent.gold}20 0%, transparent 50%);
+      radial-gradient(circle at 20% 80%, ${CSIColors.primary.main}30 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, ${CSIColors.secondary.main}30 0%, transparent 50%),
+      linear-gradient(135deg, rgba(27, 54, 92, 0.3) 0%, rgba(200, 16, 46, 0.3) 100%);
+    backdrop-filter: blur(2px);
   }
 `;
 
 const LoginCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
   padding: 3rem;
   width: 100%;
-  max-width: 440px;
+  max-width: 400px;
   box-shadow: 
-    0 20px 25px -5px rgb(0 0 0 / 0.4),
-    0 8px 10px -6px rgb(0 0 0 / 0.4);
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   z-index: 1;
 
@@ -52,40 +50,60 @@ const LoginCard = styled(motion.div)`
     margin: 1rem;
     padding: 2rem;
   }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.1) 0%, 
+      rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 24px;
+    pointer-events: none;
+  }
 `;
 
 const Logo = styled.div`
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 `;
 
 const LogoIcon = styled.div`
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  border-radius: 16px;
-  margin: 0 auto 1rem;
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, ${CSIColors.primary.main}, ${CSIColors.secondary.main});
+  border-radius: 20px;
+  margin: 0 auto 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   color: white;
   font-weight: bold;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 `;
 
 const Title = styled.h1`
   color: white;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 300;
   text-align: center;
   margin: 0 0 0.5rem 0;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 `;
 
 const Subtitle = styled.p`
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  margin: 0 0 2rem 0;
-  font-size: 1rem;
+  margin: 0 0 2.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
 `;
 
 const Form = styled.form`
@@ -97,56 +115,68 @@ const Form = styled.form`
 const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  position: relative;
 `;
 
 const Label = styled.label`
   color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 `;
 
 const Input = styled.input`
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 1.2rem 1rem;
   color: white;
   font-size: 1rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
   }
 
   &:focus {
     outline: none;
-    border-color: #3b82f6;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-bottom-color: ${CSIColors.accent.gold};
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
   }
 `;
 
 const Button = styled(motion.button)`
-  background: ${CSIColors.gradients.primary};
+  background: linear-gradient(135deg, ${CSIColors.secondary.main} 0%, ${CSIColors.secondary.dark} 100%);
   border: none;
-  border-radius: 12px;
-  padding: 1rem;
+  border-radius: 0;
+  padding: 1.2rem 2rem;
   color: white;
   font-weight: 600;
   font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  margin-top: 1rem;
+  box-shadow: 0 8px 25px rgba(200, 16, 46, 0.3);
 
   &:hover {
-    box-shadow: 0 8px 25px ${CSIColors.primary.main}40;
+    box-shadow: 0 12px 35px rgba(200, 16, 46, 0.4);
+    transform: translateY(-2px);
   }
 
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+    transform: none;
   }
 
   &::before {
@@ -156,12 +186,22 @@ const Button = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, ${CSIColors.neutral.white}20, transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s ease;
   }
 
   &:hover::before {
     left: 100%;
+  }
+`;
+
+const SignUpButton = styled(Button)`
+  background: linear-gradient(135deg, ${CSIColors.accent.gold} 0%, #B8860B 100%);
+  margin-top: 0.5rem;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+
+  &:hover {
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
   }
 `;
 
@@ -262,18 +302,18 @@ const Login: React.FC = () => {
         transition={{ duration: 0.6 }}
       >
         <Logo>
-          <LogoIcon>💰</LogoIcon>
-          <Title>Dashboard Financiero</Title>
-          <Subtitle>Gestiona tus finanzas de manera inteligente</Subtitle>
+          <LogoIcon>🏢</LogoIcon>
+          <Title>QUARTER</Title>
+          <Subtitle>No list. Just the best places to be.</Subtitle>
         </Logo>
 
         <Form onSubmit={handleSubmit}>
           <InputGroup>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">Username</Label>
             <Input
               id="email"
               type="email"
-              placeholder="tu@email.com"
+              placeholder="ahenker"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={isLoading}
@@ -281,7 +321,7 @@ const Login: React.FC = () => {
           </InputGroup>
 
           <InputGroup>
-            <Label htmlFor="password">Contraseña</Label>
+            <Label htmlFor="password">Password</Label>
             <Input
               id="password"
               type="password"
@@ -299,29 +339,37 @@ const Login: React.FC = () => {
             whileTap={{ scale: 0.98 }}
           >
             {isLoading && <LoadingSpinner />}
-            {isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+            {isLoading ? 'Logging in...' : 'Login'}
           </Button>
+
+          <SignUpButton
+            type="button"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Sign Up
+          </SignUpButton>
         </Form>
 
         <DemoCredentials>
-          <DemoTitle>🔐 Credenciales de Demo</DemoTitle>
+          <DemoTitle>🔐 Demo Credentials</DemoTitle>
           
           <DemoUser onClick={() => fillDemoCredentials('admin@inovitz.com', 'admin123')}>
             <DemoEmail>admin@inovitz.com</DemoEmail>
-            <DemoPassword>Contraseña: admin123</DemoPassword>
-            <DemoRole>Rol: Administrador</DemoRole>
+            <DemoPassword>Password: admin123</DemoPassword>
+            <DemoRole>Role: Admin</DemoRole>
           </DemoUser>
 
           <DemoUser onClick={() => fillDemoCredentials('user@buzzword.com', 'user123')}>
             <DemoEmail>user@buzzword.com</DemoEmail>
-            <DemoPassword>Contraseña: user123</DemoPassword>
-            <DemoRole>Rol: Usuario</DemoRole>
+            <DemoPassword>Password: user123</DemoPassword>
+            <DemoRole>Role: User</DemoRole>
           </DemoUser>
 
           <DemoUser onClick={() => fillDemoCredentials('viewer@empresa.com', 'viewer123')}>
             <DemoEmail>viewer@empresa.com</DemoEmail>
-            <DemoPassword>Contraseña: viewer123</DemoPassword>
-            <DemoRole>Rol: Visualizador</DemoRole>
+            <DemoPassword>Password: viewer123</DemoPassword>
+            <DemoRole>Role: Viewer</DemoRole>
           </DemoUser>
         </DemoCredentials>
       </LoginCard>
