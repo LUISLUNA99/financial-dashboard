@@ -25,7 +25,7 @@ import UserProfile from '../components/UserProfile';
 import MonthlyRevenueReport from '../components/MonthlyRevenueReport';
 import MonthlyIncomeChart from '../components/MonthlyIncomeChart';
 import GrossMarginEbitChart from '../components/GrossMarginEbitChart';
-import FinancialHeader from '../components/FinancialHeader';
+// import FinancialHeader from '../components/FinancialHeader';
 import RevenueComparisonCharts from '../components/RevenueComparisonCharts';
 import ExecutiveDashboard from '../components/ExecutiveDashboard';
 import SmartAlertsSystem from '../components/SmartAlertsSystem';
@@ -468,7 +468,7 @@ const Dashboard: React.FC = () => {
         </Header>
 
         {/* Nuevo Header Financiero */}
-        <FinancialHeader />
+        {/* <FinancialHeader /> */}
 
         {users.length > 0 && (
           <div style={{ display: 'none' }}>

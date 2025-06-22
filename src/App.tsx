@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import { Toaster } from 'react-hot-toast';
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 
 const GlobalStyle = createGlobalStyle`
@@ -190,11 +192,15 @@ const GlobalStyle = createGlobalStyle`
 
 const App: React.FC = () => {
   return (
-    <>
+    <AuthProvider>
       <GlobalStyle />
       <Router basename="/financial-dashboard" future={{ v7_startTransition: true }}>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
         </Routes>
       </Router>
       <Toaster
@@ -224,7 +230,7 @@ const App: React.FC = () => {
           },
         }}
       />
-    </>
+    </AuthProvider>
   );
 };
 
