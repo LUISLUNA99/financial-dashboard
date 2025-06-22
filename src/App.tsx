@@ -192,7 +192,7 @@ const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />
-      <Router future={{ v7_startTransition: true }}>
+      <Router basename="/financial-dashboard" future={{ v7_startTransition: true }}>
         <Routes>
           <Route path="/" element={<Dashboard />} />
         </Routes>

@@ -8,7 +8,7 @@ const parseMoneyString = (value: string): number => {
 };
 
 // Detectar si estamos usando datos mock
-const isUsingMockData = true; // Forzar uso de datos mock para GitHub Pages
+const isUsingMockData = process.env.NODE_ENV === 'production' || window.location.hostname === 'luisluna99.github.io';
 
 // Datos mock de reportes financieros
 const mockFinancialReports: FinancialReport[] = [
