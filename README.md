@@ -1,22 +1,41 @@
 # 📊 Dashboard Financiero Avanzado
 
-Un dashboard financiero moderno y completo construido con React, TypeScript, y Supabase, que incluye análisis interactivos, métricas en tiempo real, y un sistema completo de reportes financieros.
+Un dashboard financiero moderno y completo construido con React, TypeScript, y Supabase, que incluye análisis interactivos, métricas en tiempo real, sistema de autenticación elegante, y un sistema completo de reportes financieros.
+
+## 🔐 **NUEVO: Sistema de Autenticación**
+
+### Acceso Seguro con Login Elegante
+- **Pantalla de login moderna** con efectos glassmorphism
+- **Autenticación persistente** con localStorage
+- **Roles de usuario** (Administrador, Usuario, Visualizador)
+- **Credenciales demo** para pruebas rápidas
+
+### 🎫 Credenciales de Prueba
+```
+🔑 Administrador: admin@inovitz.com / admin123
+👤 Usuario: user@buzzword.com / user123  
+👁️ Visualizador: viewer@empresa.com / viewer123
+```
 
 ## ✨ Características Principales
 
-### 🎯 **Dashboard Completo con 9 Secciones**
-1. **Dashboard Principal** - Gráficos de ingresos vs gastos
-2. **Reporte Mensual** - Análisis detallado mensual
-3. **Ingresos Mensuales** - Comparación planificado vs real
-4. **KPIs Financieros** - Métricas de rentabilidad (Gross Margin, EBIT)
-5. **Comparación 2024 vs 2025** - Análisis interanual con tarjetas modernas
-6. **📊 Dashboard Ejecutivo** - Vista de alto nivel con KPIs clave
-7. **🚨 Sistema de Alertas** - Alertas inteligentes y categorizadas
-8. **📄 Exportador de Reportes** - Generación en PDF, Excel, CSV, PNG
-9. **⚡ Métricas en Tiempo Real** - Simulación de datos en vivo con diseño moderno
+### 🎯 **Dashboard Completo con 12 Secciones**
+1. **🔐 Sistema de Login** - Autenticación elegante y segura
+2. **Dashboard Principal** - Gráficos de ingresos vs gastos
+3. **Reporte Mensual** - Análisis detallado mensual
+4. **Ingresos Mensuales** - Comparación planificado vs real
+5. **KPIs Financieros** - Métricas de rentabilidad (Gross Margin, EBIT)
+6. **Comparación 2024 vs 2025** - Análisis interanual con tarjetas modernas
+7. **📊 Dashboard Ejecutivo** - Vista de alto nivel con KPIs clave
+8. **🚨 Sistema de Alertas** - Alertas inteligentes y categorizadas
+9. **📄 Exportador de Reportes** - Generación en PDF, Excel, CSV, PNG
+10. **⚡ Métricas en Tiempo Real** - Simulación de datos en vivo con diseño moderno
+11. **🔍 Filtros Avanzados** - Filtrado por empresa, categoría y períodos
+12. **🎯 Objetivos y Progreso** - Seguimiento de metas con gauges interactivos
 
 ### 🎨 **Diseño Visual Moderno**
-- **Header financiero** con gradientes y métricas de Juan Pérez
+- **Sistema de autenticación** con glassmorphism y animaciones
+- **Header de usuario** con información del perfil y logout
 - **Tarjetas con efectos hover** y animaciones suaves
 - **Gradientes coloridos** y elementos glassmorphism
 - **Sistema de badges** y indicadores de progreso

@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
+import { useAuth } from '../contexts/AuthContext';
 import { getTransactions, getUsers, getDashboardStats } from '../services/supabaseClient';
 import Chart, { IncomeExpenseChart, ExpenseCategoryChart } from '../components/Chart';
 import UserProfile from '../components/UserProfile';
@@ -26,6 +27,8 @@ import MonthlyRevenueReport from '../components/MonthlyRevenueReport';
 import MonthlyIncomeChart from '../components/MonthlyIncomeChart';
 import GrossMarginEbitChart from '../components/GrossMarginEbitChart';
 // import FinancialHeader from '../components/FinancialHeader';
+import RoleBasedContent from '../components/RoleBasedContent';
+import RoleGuard from '../components/RoleGuard';
 import RevenueComparisonCharts from '../components/RevenueComparisonCharts';
 import ExecutiveDashboard from '../components/ExecutiveDashboard';
 import SmartAlertsSystem from '../components/SmartAlertsSystem';
@@ -360,6 +363,7 @@ const Tab = styled.button<{ active?: boolean }>`
 `;
 
 const Dashboard: React.FC = () => {
+  const { user } = useAuth();
   const [users, setUsers] = useState<User[]>([]);
   const [selectedUserId, setSelectedUserId] = useState<string>('');
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -470,6 +474,9 @@ const Dashboard: React.FC = () => {
         {/* Nuevo Header Financiero */}
         {/* <FinancialHeader /> */}
 
+        {/* Contenido basado en roles */}
+        <RoleBasedContent />
+
         {users.length > 0 && (
           <div style={{ display: 'none' }}>
             <UserSelector value={selectedUserId} onChange={handleUserChange}>
@@ -517,24 +524,30 @@ const Dashboard: React.FC = () => {
               >
                 2024 vs 2025
               </Tab>
-              <Tab 
-                active={activeTab === 'ejecutivo'} 
-                onClick={() => handleTabChange('ejecutivo')}
-              >
-                📊 Ejecutivo
-              </Tab>
-              <Tab 
-                active={activeTab === 'alertas'} 
-                onClick={() => handleTabChange('alertas')}
-              >
-                🚨 Alertas
-              </Tab>
-              <Tab 
-                active={activeTab === 'exportar'} 
-                onClick={() => handleTabChange('exportar')}
-              >
-                📄 Exportar
-              </Tab>
+              {user?.role === 'admin' && (
+                <Tab 
+                  active={activeTab === 'ejecutivo'} 
+                  onClick={() => handleTabChange('ejecutivo')}
+                >
+                  📊 Ejecutivo
+                </Tab>
+              )}
+              {user?.role !== 'viewer' && (
+                <Tab 
+                  active={activeTab === 'alertas'} 
+                  onClick={() => handleTabChange('alertas')}
+                >
+                  🚨 Alertas
+                </Tab>
+              )}
+              {user?.role !== 'viewer' && (
+                <Tab 
+                  active={activeTab === 'exportar'} 
+                  onClick={() => handleTabChange('exportar')}
+                >
+                  📄 Exportar
+                </Tab>
+              )}
               <Tab 
                 active={activeTab === 'metricas'} 
                 onClick={() => handleTabChange('metricas')}
@@ -637,15 +650,21 @@ const Dashboard: React.FC = () => {
             )}
 
             {activeTab === 'ejecutivo' && (
-              <ExecutiveDashboard />
+              <RoleGuard allowedRoles={['admin']}>
+                <ExecutiveDashboard />
+              </RoleGuard>
             )}
 
             {activeTab === 'alertas' && (
-              <SmartAlertsSystem />
+              <RoleGuard allowedRoles={['admin', 'user']}>
+                <SmartAlertsSystem />
+              </RoleGuard>
             )}
 
             {activeTab === 'exportar' && (
-              <ReportExporter />
+              <RoleGuard allowedRoles={['admin', 'user']}>
+                <ReportExporter />
+              </RoleGuard>
             )}
 
             {activeTab === 'metricas' && (
