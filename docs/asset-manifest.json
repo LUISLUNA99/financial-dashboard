@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/financial-dashboard/static/js/main.cfecba19.js",
+    "index.html": "/financial-dashboard/index.html",
+    "main.cfecba19.js.map": "/financial-dashboard/static/js/main.cfecba19.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.cfecba19.js"
+  ]
+}
