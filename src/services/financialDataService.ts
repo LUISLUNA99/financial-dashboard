@@ -348,3 +348,72 @@ export const getFinancialCategories = async (): Promise<string[]> => {
     return [];
   }
 };
+
+// Función para obtener datos financieros comparativos
+export const getFinancialData = async () => {
+  if (isUsingMockData) {
+    // Simular delay de red
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    // Datos mock para comparaciones 2024 vs 2025
+    return [
+      {
+        empresa: 'BUZZWORD',
+        ln: 'LN1',
+        cc: 'CC1',
+        proyecto: 'Proyecto Principal',
+        monthlyData: {
+          'Enero': { revenue2024: 4500000, revenue2025: 5874642, percentage: 30.5 },
+          'Febrero': { revenue2024: 4800000, revenue2025: 6353185, percentage: 32.4 },
+          'Marzo': { revenue2024: 5200000, revenue2025: 5906350, percentage: 13.6 },
+          'Abril': { revenue2024: 5500000, revenue2025: 6663094, percentage: 21.1 },
+          'Mayo': { revenue2024: 5800000, revenue2025: 0, percentage: -100 },
+          'Junio': { revenue2024: 6000000, revenue2025: 0, percentage: -100 }
+        },
+        total2024: 31800000,
+        total2025: 24797271,
+        annualPercentage: -22.0
+      },
+      {
+        empresa: 'INOVITZ',
+        ln: 'LN2',
+        cc: 'CC2',
+        proyecto: 'Innovación Digital',
+        monthlyData: {
+          'Enero': { revenue2024: 2000000, revenue2025: 2500000, percentage: 25.0 },
+          'Febrero': { revenue2024: 2200000, revenue2025: 2750000, percentage: 25.0 },
+          'Marzo': { revenue2024: 2400000, revenue2025: 3000000, percentage: 25.0 },
+          'Abril': { revenue2024: 2600000, revenue2025: 3250000, percentage: 25.0 },
+          'Mayo': { revenue2024: 2800000, revenue2025: 0, percentage: -100 },
+          'Junio': { revenue2024: 3000000, revenue2025: 0, percentage: -100 }
+        },
+        total2024: 15000000,
+        total2025: 11500000,
+        annualPercentage: -23.3
+      }
+    ];
+  }
+
+  try {
+    // En caso de que se implemente con datos reales de Supabase
+    const { data, error } = await supabase
+      .from('revenue_comparison')
+      .select('*')
+      .order('empresa, proyecto');
+
+    if (error) throw error;
+    return data || [];
+  } catch (error) {
+    console.error('Error fetching financial data:', error);
+    return [];
+  }
+};
+
+// Objeto de servicio financiero para exportar
+export const financialDataService = {
+  getFinancialData,
+  getMonthlyRevenueData,
+  getFinancialReportsByCategory,
+  getFinancialCategories,
+  uploadFinancialData
+};

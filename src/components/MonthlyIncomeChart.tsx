@@ -1,14 +1,61 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as echarts from 'echarts';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardContent } from './ui';
 import { getMonthlyRevenueData } from '../services/financialDataService';
 import { RevenueData } from '../types';
 
 const ChartContainer = styled.div`
   width: 100%;
-  height: 400px;
+  height: 450px;
   margin-top: 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: 1rem;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+`;
+
+const EnhancedCard = styled(Card)`
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+`;
+
+const GradientHeader = styled(CardHeader)`
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+    pointer-events: none;
+  }
+`;
+
+const AnimatedTitle = styled(CardTitle)`
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 `;
 
 const LoadingContainer = styled.div`

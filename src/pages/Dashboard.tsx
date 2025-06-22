@@ -31,6 +31,12 @@ import ExecutiveDashboard from '../components/ExecutiveDashboard';
 import SmartAlertsSystem from '../components/SmartAlertsSystem';
 import ReportExporter from '../components/ReportExporter';
 import RealTimeMetrics from '../components/RealTimeMetrics';
+import CompanyFilters from '../components/CompanyFilters';
+import ProgressGauges from '../components/ProgressGauges';
+import TreemapChart from '../components/TreemapChart';
+import RadarChart from '../components/RadarChart';
+import EnhancedMonthlyIncomeChart from '../components/EnhancedMonthlyIncomeChart';
+import EnhancedRevenueComparison from '../components/EnhancedRevenueComparison';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, Button, Badge } from '../components/ui';
 import { Transaction, User, ChartData, DashboardStats } from '../types';
 import dayjs from 'dayjs';
@@ -360,7 +366,12 @@ const Dashboard: React.FC = () => {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'reporte' | 'ingresos' | 'rentabilidad' | 'comparacion' | 'ejecutivo' | 'alertas' | 'exportar' | 'metricas'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'reporte' | 'ingresos' | 'rentabilidad' | 'comparacion' | 'ejecutivo' | 'alertas' | 'exportar' | 'metricas' | 'filtros' | 'objetivos' | 'avanzado'>('dashboard');
+  
+  // Add state for company filters
+  const [selectedCompany, setSelectedCompany] = useState<string>('ALL');
+  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [selectedTimeRange, setSelectedTimeRange] = useState<string>('ALL');
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -419,7 +430,7 @@ const Dashboard: React.FC = () => {
     setSelectedUserId(event.target.value);
   };
 
-  const handleTabChange = (tab: 'dashboard' | 'reporte' | 'ingresos' | 'rentabilidad' | 'comparacion' | 'ejecutivo' | 'alertas' | 'exportar' | 'metricas') => {
+  const handleTabChange = (tab: 'dashboard' | 'reporte' | 'ingresos' | 'rentabilidad' | 'comparacion' | 'ejecutivo' | 'alertas' | 'exportar' | 'metricas' | 'filtros' | 'objetivos' | 'avanzado') => {
     setActiveTab(tab);
   };
 
@@ -530,6 +541,24 @@ const Dashboard: React.FC = () => {
               >
                 ⚡ Métricas
               </Tab>
+              <Tab 
+                active={activeTab === 'filtros'} 
+                onClick={() => handleTabChange('filtros')}
+              >
+                🔍 Filtros Avanzados
+              </Tab>
+              <Tab 
+                active={activeTab === 'objetivos'} 
+                onClick={() => handleTabChange('objetivos')}
+              >
+                🎯 Objetivos
+              </Tab>
+              <Tab 
+                active={activeTab === 'avanzado'} 
+                onClick={() => handleTabChange('avanzado')}
+              >
+                📈 Gráficos Avanzados
+              </Tab>
             </Tabs>
 
             {activeTab === 'dashboard' && (
@@ -563,7 +592,7 @@ const Dashboard: React.FC = () => {
                     </InfoDescription>
                   </InfoContent>
                 </InfoCard>
-                <MonthlyIncomeChart />
+                <EnhancedMonthlyIncomeChart />
               </div>
             )}
 
@@ -603,12 +632,8 @@ const Dashboard: React.FC = () => {
                     </InfoDescription>
                   </InfoContent>
                 </InfoCard>
-                <RevenueComparisonCharts />
+                <EnhancedRevenueComparison />
               </div>
-            )}
-
-            {activeTab === 'comparacion' && (
-              <RevenueComparisonCharts />
             )}
 
             {activeTab === 'ejecutivo' && (
@@ -625,6 +650,84 @@ const Dashboard: React.FC = () => {
 
             {activeTab === 'metricas' && (
               <RealTimeMetrics />
+            )}
+
+            {activeTab === 'filtros' && (
+              <div>
+                <InfoCard>
+                  <InfoContent>
+                    <InfoHeader>
+                      <Filter className="h-5 w-5" style={{ color: 'hsl(262.1 83.3% 57.8%)' }} />
+                      <InfoTitle>
+                        Filtros Avanzados por Empresa
+                      </InfoTitle>
+                    </InfoHeader>
+                    <InfoDescription>
+                      Sistema de filtrado avanzado para analizar datos por empresa (BUZZWORD vs INOVITZ), 
+                      categorías financieras y períodos de tiempo específicos. Permite comparaciones detalladas 
+                      y análisis segmentado de la información financiera.
+                    </InfoDescription>
+                  </InfoContent>
+                </InfoCard>
+                <CompanyFilters 
+                  selectedCompany={selectedCompany}
+                  selectedCategory={selectedCategory}
+                  selectedTimeRange={selectedTimeRange}
+                  onCompanyChange={setSelectedCompany}
+                  onCategoryChange={setSelectedCategory}
+                  onTimeRangeChange={setSelectedTimeRange}
+                />
+              </div>
+            )}
+
+            {activeTab === 'objetivos' && (
+              <div>
+                <InfoCard>
+                  <InfoContent>
+                    <InfoHeader>
+                      <TrendingUp className="h-5 w-5" style={{ color: 'hsl(142.1 76.2% 36.3%)' }} />
+                      <InfoTitle>
+                        Seguimiento de Objetivos Financieros
+                      </InfoTitle>
+                    </InfoHeader>
+                    <InfoDescription>
+                      Medidores de progreso visual para monitorear el cumplimiento de objetivos financieros clave. 
+                      Incluye seguimiento de ingresos, márgenes y EBIT con indicadores de rendimiento en tiempo real.
+                    </InfoDescription>
+                  </InfoContent>
+                </InfoCard>
+                <ProgressGauges 
+                  data={[
+                    { title: 'Ingresos 2025', current: 7051678, target: 8000000, unit: 'MXN', format: 'currency' },
+                    { title: 'Gross Margin', current: 2546166, target: 3000000, unit: 'MXN', format: 'currency' },
+                    { title: 'EBIT', current: 1739799, target: 2000000, unit: 'MXN', format: 'currency' }
+                  ]}
+                />
+              </div>
+            )}
+
+            {activeTab === 'avanzado' && (
+              <div>
+                <InfoCard>
+                  <InfoContent>
+                    <InfoHeader>
+                      <PieChart className="h-5 w-5" style={{ color: 'hsl(262.1 83.3% 57.8%)' }} />
+                      <InfoTitle>
+                        Visualizaciones Avanzadas
+                      </InfoTitle>
+                    </InfoHeader>
+                    <InfoDescription>
+                      Gráficos especializados para análisis profundo de datos financieros. 
+                      Incluye mapas de calor jerárquicos y análisis radar multidimensional para 
+                      identificar patrones complejos y oportunidades de optimización.
+                    </InfoDescription>
+                  </InfoContent>
+                </InfoCard>
+                <div style={{ display: 'grid', gap: '2rem', marginBottom: '2rem' }}>
+                  <TreemapChart />
+                  <RadarChart />
+                </div>
+              </div>
             )}
 
             <TransactionsSection>
