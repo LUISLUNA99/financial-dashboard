@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Session</title>
+</head>
+<body>
+    <h1>Clearing Session...</h1>
+    <script>
+        localStorage.clear();
+        sessionStorage.clear();
+        alert('Session cleared! Redirecting to login...');
+        window.location.href = 'http://localhost:3000/financial-dashboard';
+    </script>
+</body>
+</html>

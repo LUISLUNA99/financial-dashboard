@@ -11,8 +11,8 @@ const LoginContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: 
-    linear-gradient(rgba(27, 54, 92, 0.6), rgba(200, 16, 46, 0.4)),
-    url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2864&q=80') center/cover;
+    linear-gradient(rgba(27, 54, 92, 0.8), rgba(200, 16, 46, 0.6)),
+    linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 100%);
   position: relative;
   overflow: hidden;
 
@@ -24,10 +24,73 @@ const LoginContainer = styled.div`
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 80%, ${CSIColors.primary.main}30 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, ${CSIColors.secondary.main}30 0%, transparent 50%),
-      linear-gradient(135deg, rgba(27, 54, 92, 0.3) 0%, rgba(200, 16, 46, 0.3) 100%);
+      radial-gradient(circle at 20% 80%, ${CSIColors.primary.main}40 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, ${CSIColors.secondary.main}40 0%, transparent 50%),
+      radial-gradient(circle at 15% 25%, ${CSIColors.accent.gold}20 0%, transparent 30%),
+      radial-gradient(circle at 85% 75%, ${CSIColors.accent.gold}15 0%, transparent 25%),
+      radial-gradient(circle at 60% 10%, white 1px, transparent 2px),
+      radial-gradient(circle at 90% 30%, white 0.5px, transparent 1px),
+      radial-gradient(circle at 30% 15%, white 0.8px, transparent 1.5px),
+      radial-gradient(circle at 70% 35%, white 0.3px, transparent 1px),
+      linear-gradient(135deg, rgba(27, 54, 92, 0.4) 0%, rgba(200, 16, 46, 0.4) 100%);
     backdrop-filter: blur(2px);
+  }
+
+  /* Enhanced city skyline effect */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: 
+      linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(27, 54, 92, 0.8) 10%, 
+        rgba(27, 54, 92, 0.9) 15%, 
+        transparent 20%,
+        transparent 25%,
+        rgba(200, 16, 46, 0.7) 30%,
+        rgba(200, 16, 46, 0.8) 35%,
+        transparent 40%,
+        transparent 50%,
+        rgba(212, 175, 55, 0.6) 55%,
+        rgba(212, 175, 55, 0.7) 60%,
+        transparent 65%,
+        transparent 70%,
+        rgba(27, 54, 92, 0.8) 75%,
+        rgba(27, 54, 92, 0.9) 80%,
+        transparent 85%,
+        transparent 90%,
+        rgba(200, 16, 46, 0.6) 95%,
+        transparent 100%
+      );
+    clip-path: polygon(
+      0% 100%, 
+      5% 60%, 
+      10% 80%, 
+      15% 40%, 
+      20% 90%, 
+      25% 50%, 
+      30% 70%, 
+      35% 30%, 
+      40% 85%, 
+      45% 55%, 
+      50% 75%, 
+      55% 35%, 
+      60% 80%, 
+      65% 45%, 
+      70% 70%, 
+      75% 25%, 
+      80% 85%, 
+      85% 50%, 
+      90% 75%, 
+      95% 40%, 
+      100% 90%, 
+      100% 100%
+    );
+    z-index: 0;
   }
 `;
 
@@ -45,6 +108,7 @@ const LoginCard = styled(motion.div)`
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   z-index: 1;
+  overflow: hidden;
 
   @media (max-width: 640px) {
     margin: 1rem;
@@ -63,6 +127,30 @@ const LoginCard = styled(motion.div)`
       rgba(255, 255, 255, 0.05) 100%);
     border-radius: 24px;
     pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+      ${CSIColors.primary.main}40, 
+      ${CSIColors.secondary.main}40, 
+      ${CSIColors.accent.gold}40,
+      ${CSIColors.primary.main}40);
+    background-size: 400% 400%;
+    border-radius: 26px;
+    z-index: -1;
+    animation: shimmer 8s ease-in-out infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
 `;
 
