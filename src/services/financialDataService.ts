@@ -8,10 +8,7 @@ const parseMoneyString = (value: string): number => {
 };
 
 // Detectar si estamos usando datos mock
-const isUsingMockData = !process.env.REACT_APP_SUPABASE_URL || 
-                       !process.env.REACT_APP_SUPABASE_ANON_KEY ||
-                       (process.env.REACT_APP_SUPABASE_URL === 'https://your-supabase-url.supabase.co') || 
-                       (process.env.REACT_APP_SUPABASE_ANON_KEY === 'your-anon-key');
+const isUsingMockData = true; // Forzar uso de datos mock para GitHub Pages
 
 // Datos mock de reportes financieros
 const mockFinancialReports: FinancialReport[] = [
