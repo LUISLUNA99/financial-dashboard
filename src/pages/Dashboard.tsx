@@ -21,6 +21,7 @@ import {
 import toast from 'react-hot-toast';
 
 import { useAuth } from '../contexts/AuthContext';
+import { CSIColors, RoleColors } from '../styles/CSITheme';
 import { getTransactions, getUsers, getDashboardStats } from '../services/supabaseClient';
 import Chart, { IncomeExpenseChart, ExpenseCategoryChart } from '../components/Chart';
 import UserProfile from '../components/UserProfile';
@@ -45,10 +46,10 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, Button, Badg
 import { Transaction, User, ChartData, DashboardStats } from '../types';
 import dayjs from 'dayjs';
 
-// Styled Components con diseño V0.dev
+// Styled Components con diseño CSI Corporate
 const DashboardContainer = styled.div`
   min-height: 100vh;
-  background: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(214 32% 91%) 100%);
+  background: ${CSIColors.gradients.background};
   padding: 1rem;
   
   @media (min-width: 768px) {
@@ -89,7 +90,7 @@ const HeaderRight = styled.div`
 `;
 
 const Title = styled.h1`
-  color: hsl(222.2 84% 4.9%);
+  color: ${CSIColors.primary.main};
   font-size: 2.25rem;
   font-weight: 700;
   margin: 0;
@@ -376,11 +377,11 @@ const ProfileSection = styled(motion.div)`
   align-items: center;
   gap: 1rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(135deg, ${CSIColors.neutral.white}15 0%, ${CSIColors.neutral.white}08 100%);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid ${CSIColors.neutral.white}20;
   border-radius: 1rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px ${CSIColors.primary.dark}20;
 `;
 
 const UserSection = styled.div`
@@ -396,10 +397,10 @@ const Avatar = styled.div<{ role: string }>`
   border-radius: 50%;
   background: ${props => {
     switch (props.role) {
-      case 'admin': return 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)';
-      case 'user': return 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)';
-      case 'viewer': return 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)';
-      default: return 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+      case 'admin': return RoleColors.admin.background;
+      case 'user': return RoleColors.user.background;
+      case 'viewer': return RoleColors.viewer.background;
+      default: return CSIColors.gradients.primary;
     }
   }};
   display: flex;
@@ -418,13 +419,13 @@ const UserInfo = styled.div`
 const UserName = styled.h2`
   font-size: 1.5rem;
   font-weight: 600;
-  color: #0f172a;
+  color: ${CSIColors.primary.main};
   margin: 0;
 `;
 
 const UserEmail = styled.p`
   font-size: 0.875rem;
-  color: #64748b;
+  color: ${CSIColors.neutral.gray};
   margin: 0.25rem 0 0 0;
   display: flex;
   align-items: center;
@@ -435,10 +436,10 @@ const RoleBadge = styled.span<{ role: string }>`
   padding: 0.25rem 0.75rem;
   background: ${props => {
     switch (props.role) {
-      case 'admin': return '#f59e0b';
-      case 'user': return '#3b82f6';
-      case 'viewer': return '#8b5cf6';
-      default: return '#10b981';
+      case 'admin': return RoleColors.admin.badge;
+      case 'user': return RoleColors.user.badge;
+      case 'viewer': return RoleColors.viewer.badge;
+      default: return CSIColors.primary.main;
     }
   }};
   color: white;
@@ -456,7 +457,7 @@ const LogoutButton = styled(motion.button)`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #ef4444;
+  background: ${CSIColors.secondary.main};
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -466,7 +467,7 @@ const LogoutButton = styled(motion.button)`
   transition: all 0.2s ease;
 
   &:hover {
-    background: #dc2626;
+    background: ${CSIColors.secondary.dark};
     transform: translateY(-1px);
   }
 
@@ -484,10 +485,10 @@ const MetricsSection = styled(motion.div)`
 
 const MetricCard = styled(motion.div)`
   padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  background: linear-gradient(135deg, ${CSIColors.neutral.white}95 0%, ${CSIColors.neutral.white}85 100%);
   border-radius: 0.75rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px ${CSIColors.primary.main}10;
+  border: 1px solid ${CSIColors.primary.main}15;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -495,7 +496,7 @@ const MetricCard = styled(motion.div)`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px ${CSIColors.primary.main}20;
   }
 `;
 
@@ -516,7 +517,7 @@ const MetricInfo = styled.div`
 
 const MetricLabel = styled.p`
   font-size: 0.875rem;
-  color: #64748b;
+  color: ${CSIColors.neutral.gray};
   margin: 0 0 0.25rem 0;
   font-weight: 500;
 `;
@@ -524,7 +525,7 @@ const MetricLabel = styled.p`
 const MetricValue = styled.h3`
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0f172a;
+  color: ${CSIColors.primary.main};
   margin: 0;
 `;
 
@@ -672,7 +673,7 @@ const Dashboard: React.FC = () => {
           <MetricsSection>
             {['admin', 'user', 'viewer'].includes(user?.role || '') && (
               <MetricCard whileHover={{ y: -2 }}>
-                <MetricIcon color="linear-gradient(135deg, #10b981 0%, #059669 100%)">
+                <MetricIcon color={CSIColors.gradients.primary}>
                   <DollarSign size={20} />
                 </MetricIcon>
                 <MetricInfo>
@@ -684,7 +685,7 @@ const Dashboard: React.FC = () => {
             
             {['admin', 'user'].includes(user?.role || '') && (
               <MetricCard whileHover={{ y: -2 }}>
-                <MetricIcon color="linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)">
+                <MetricIcon color={CSIColors.gradients.secondary}>
                   <TrendingUp size={20} />
                 </MetricIcon>
                 <MetricInfo>
@@ -696,7 +697,7 @@ const Dashboard: React.FC = () => {
             
             {user?.role === 'admin' && (
               <MetricCard whileHover={{ y: -2 }}>
-                <MetricIcon color="linear-gradient(135deg, #f59e0b 0%, #d97706 100%)">
+                <MetricIcon color={CSIColors.gradients.accent}>
                   <Target size={20} />
                 </MetricIcon>
                 <MetricInfo>

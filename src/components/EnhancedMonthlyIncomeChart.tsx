@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardContent } from './ui';
 import { getMonthlyRevenueData } from '../services/financialDataService';
 import { RevenueData } from '../types';
+import { CSIColors } from '../styles/CSITheme';
 
 const MainChartContainer = styled.div`
   width: 100%;
@@ -31,7 +32,7 @@ const EnhancedCard = styled(Card)`
 `;
 
 const GradientHeader = styled(CardHeader)`
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, ${CSIColors.primary.main} 0%, ${CSIColors.secondary.main} 100%);
   color: white;
   padding: 1.5rem;
   position: relative;
@@ -330,17 +331,17 @@ const EnhancedMonthlyIncomeChart: React.FC = () => {
           type: 'line',
           data: plannedIncome,
           lineStyle: {
-            color: '#94a3b8',
+            color: '#C8102E',
             width: 3,
             shadowBlur: 5,
-            shadowColor: 'rgba(148, 163, 184, 0.3)'
+            shadowColor: 'rgba(200, 16, 46, 0.3)'
           },
           itemStyle: {
-            color: '#94a3b8',
+            color: '#C8102E',
             borderWidth: 3,
             borderColor: '#ffffff',
             shadowBlur: 5,
-            shadowColor: 'rgba(148, 163, 184, 0.5)'
+            shadowColor: 'rgba(200, 16, 46, 0.5)'
           },
           areaStyle: {
             color: {
@@ -350,8 +351,8 @@ const EnhancedMonthlyIncomeChart: React.FC = () => {
               x2: 0,
               y2: 1,
               colorStops: [
-                { offset: 0, color: 'rgba(148, 163, 184, 0.4)' },
-                { offset: 1, color: 'rgba(148, 163, 184, 0.05)' }
+                { offset: 0, color: 'rgba(200, 16, 46, 0.4)' },
+                { offset: 1, color: 'rgba(200, 16, 46, 0.05)' }
               ]
             }
           },
@@ -371,17 +372,17 @@ const EnhancedMonthlyIncomeChart: React.FC = () => {
           type: 'line',
           data: actualIncome,
           lineStyle: {
-            color: '#22c55e',
+            color: '#1B365C',
             width: 4,
             shadowBlur: 8,
-            shadowColor: 'rgba(34, 197, 94, 0.4)'
+            shadowColor: 'rgba(27, 54, 92, 0.4)'
           },
           itemStyle: {
-            color: '#22c55e',
+            color: '#1B365C',
             borderWidth: 3,
             borderColor: '#ffffff',
             shadowBlur: 8,
-            shadowColor: 'rgba(34, 197, 94, 0.6)'
+            shadowColor: 'rgba(27, 54, 92, 0.6)'
           },
           areaStyle: {
             color: {
@@ -391,8 +392,8 @@ const EnhancedMonthlyIncomeChart: React.FC = () => {
               x2: 0,
               y2: 1,
               colorStops: [
-                { offset: 0, color: 'rgba(34, 197, 94, 0.4)' },
-                { offset: 1, color: 'rgba(34, 197, 94, 0.05)' }
+                { offset: 0, color: 'rgba(27, 54, 92, 0.4)' },
+                { offset: 1, color: 'rgba(27, 54, 92, 0.05)' }
               ]
             }
           },

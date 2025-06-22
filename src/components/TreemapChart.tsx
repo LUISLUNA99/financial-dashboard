@@ -3,6 +3,7 @@ import * as echarts from 'echarts';
 import styled from 'styled-components';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/Card';
 import { financialDataService } from '../services/financialDataService';
+import { CSIColors } from '../styles/CSITheme';
 
 const TreemapChartContainer = styled.div`
   width: 100%;

@@ -394,13 +394,13 @@ const EnhancedRevenueComparison: React.FC = () => {
               type: 'line',
               data: monthlyTotals2025,
               lineStyle: {
-                color: '#22c55e',
+                color: '#1B365C',
                 width: 4,
                 shadowBlur: 8,
-                shadowColor: 'rgba(34, 197, 94, 0.4)'
+                shadowColor: 'rgba(27, 54, 92, 0.4)'
               },
               itemStyle: {
-                color: '#22c55e',
+                color: '#1B365C',
                 borderWidth: 2,
                 borderColor: '#fff'
               },

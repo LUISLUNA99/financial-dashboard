@@ -369,12 +369,12 @@ const GrossMarginEbitChart: React.FC = () => {
           type: 'line',
           data: plannedIncomeValues,
           lineStyle: {
-            color: '#22c55e',
+            color: '#1B365C',
             width: 2,
             type: 'dashed'
           },
           itemStyle: {
-            color: '#22c55e',
+            color: '#1B365C',
             borderWidth: 2,
             borderColor: '#ffffff'
           },
@@ -385,11 +385,11 @@ const GrossMarginEbitChart: React.FC = () => {
           type: 'line',
           data: grossMarginValues,
           lineStyle: {
-            color: '#3b82f6',
+            color: '#1B365C',
             width: 3
           },
           itemStyle: {
-            color: '#3b82f6',
+            color: '#1B365C',
             borderWidth: 2,
             borderColor: '#ffffff'
           },
@@ -400,12 +400,12 @@ const GrossMarginEbitChart: React.FC = () => {
           type: 'line',
           data: grossMarginPlannedValues,
           lineStyle: {
-            color: '#3b82f6',
+            color: '#1B365C',
             width: 2,
             type: 'dashed'
           },
           itemStyle: {
-            color: '#3b82f6',
+            color: '#1B365C',
             borderWidth: 2,
             borderColor: '#ffffff'
           },
@@ -416,11 +416,11 @@ const GrossMarginEbitChart: React.FC = () => {
           type: 'line',
           data: ebitValues,
           lineStyle: {
-            color: '#f59e0b',
+            color: '#D4AF37',
             width: 3
           },
           itemStyle: {
-            color: '#f59e0b',
+            color: '#D4AF37',
             borderWidth: 2,
             borderColor: '#ffffff'
           },
@@ -431,12 +431,12 @@ const GrossMarginEbitChart: React.FC = () => {
           type: 'line',
           data: ebitPlannedValues,
           lineStyle: {
-            color: '#f59e0b',
+            color: '#D4AF37',
             width: 2,
             type: 'dashed'
           },
           itemStyle: {
-            color: '#f59e0b',
+            color: '#D4AF37',
             borderWidth: 2,
             borderColor: '#ffffff'
           },

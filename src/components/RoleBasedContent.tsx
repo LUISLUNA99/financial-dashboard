@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Shield, Eye, Settings, BarChart3, Users, Lock } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { CSIColors, RoleColors } from '../styles/CSITheme';
 
 const RoleIndicator = styled(motion.div)<{ role: string }>`
   display: flex;
@@ -14,23 +15,23 @@ const RoleIndicator = styled(motion.div)<{ role: string }>`
   border: 2px solid;
   background: ${props => {
     switch (props.role) {
-      case 'admin': return 'linear-gradient(135deg, #fef3c7 0%, #f59e0b 100%)';
-      case 'user': return 'linear-gradient(135deg, #dbeafe 0%, #3b82f6 100%)';
-      case 'viewer': return 'linear-gradient(135deg, #f3e8ff 0%, #8b5cf6 100%)';
-      default: return 'linear-gradient(135deg, #f1f5f9 0%, #64748b 100%)';
+      case 'admin': return RoleColors.admin.background;
+      case 'user': return RoleColors.user.background;
+      case 'viewer': return RoleColors.viewer.background;
+      default: return CSIColors.gradients.background;
     }
   }};
   border-color: ${props => {
     switch (props.role) {
-      case 'admin': return '#f59e0b';
-      case 'user': return '#3b82f6';
-      case 'viewer': return '#8b5cf6';
-      default: return '#64748b';
+      case 'admin': return RoleColors.admin.badge;
+      case 'user': return RoleColors.user.badge;
+      case 'viewer': return RoleColors.viewer.badge;
+      default: return CSIColors.neutral.gray;
     }
   }};
   color: white;
   font-weight: 600;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px ${CSIColors.primary.dark}20;
 `;
 
 const RoleIcon = styled.div`
@@ -70,19 +71,19 @@ const PermissionsGrid = styled.div`
 const PermissionCard = styled(motion.div)<{ available: boolean }>`
   padding: 1rem;
   border-radius: 0.5rem;
-  background: ${props => props.available ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)'};
-  border: 1px solid ${props => props.available ? 'rgba(34, 197, 94, 0.2)' : 'rgba(239, 68, 68, 0.2)'};
+  background: ${props => props.available ? `${CSIColors.status.success}15` : `${CSIColors.status.error}15`};
+  border: 1px solid ${props => props.available ? `${CSIColors.status.success}30` : `${CSIColors.status.error}30`};
   display: flex;
   align-items: center;
   gap: 0.75rem;
 `;
 
 const PermissionIcon = styled.div<{ available: boolean }>`
-  color: ${props => props.available ? '#22c55e' : '#ef4444'};
+  color: ${props => props.available ? CSIColors.status.success : CSIColors.status.error};
 `;
 
 const PermissionText = styled.span<{ available: boolean }>`
-  color: ${props => props.available ? '#22c55e' : '#ef4444'};
+  color: ${props => props.available ? CSIColors.status.success : CSIColors.status.error};
   font-weight: 500;
 `;
 

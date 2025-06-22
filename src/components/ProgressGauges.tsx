@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import styled from 'styled-components';
 import { Card, CardHeader, CardTitle, CardContent } from './ui';
+import { CSIColors } from '../styles/CSITheme';
 
 const ChartContainer = styled.div`
   width: 100%;
@@ -90,10 +91,10 @@ const ProgressGauges: React.FC<ProgressGaugesProps> = ({
   };
 
   const getProgressColor = (percentage: number) => {
-    if (percentage >= 90) return '#22c55e'; // Verde
-    if (percentage >= 70) return '#eab308'; // Amarillo
-    if (percentage >= 50) return '#f97316'; // Naranja
-    return '#ef4444'; // Rojo
+    if (percentage >= 90) return CSIColors.primary.main; // CSI Primary Blue
+    if (percentage >= 70) return CSIColors.accent.gold; // CSI Gold
+    if (percentage >= 50) return CSIColors.secondary.light; // CSI Light Red
+    return CSIColors.secondary.main; // CSI Red
   };
 
   const GaugeChart: React.FC<{ data: GaugeData; index: number }> = ({ data, index }) => {

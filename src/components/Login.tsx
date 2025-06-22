@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
+import { CSIColors } from '../styles/CSITheme';
 import toast from 'react-hot-toast';
 
 const LoginContainer = styled.div`
@@ -10,11 +11,11 @@ const LoginContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, 
-    hsl(220 60% 10%) 0%, 
-    hsl(230 45% 15%) 25%, 
-    hsl(240 40% 20%) 50%, 
-    hsl(250 35% 25%) 75%, 
-    hsl(260 30% 30%) 100%
+    ${CSIColors.primary.dark} 0%, 
+    ${CSIColors.primary.main} 25%, 
+    ${CSIColors.secondary.dark} 50%, 
+    ${CSIColors.secondary.main} 75%, 
+    ${CSIColors.accent.gold} 100%
   );
   position: relative;
   overflow: hidden;
@@ -27,9 +28,9 @@ const LoginContainer = styled.div`
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 80%, hsla(220, 70%, 60%, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, hsla(260, 70%, 60%, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, hsla(240, 70%, 60%, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 20% 80%, ${CSIColors.primary.main}40 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, ${CSIColors.secondary.main}40 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, ${CSIColors.accent.gold}20 0%, transparent 50%);
   }
 `;
 
@@ -127,7 +128,7 @@ const Input = styled.input`
 `;
 
 const Button = styled(motion.button)`
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background: ${CSIColors.gradients.primary};
   border: none;
   border-radius: 12px;
   padding: 1rem;
@@ -140,7 +141,7 @@ const Button = styled(motion.button)`
   overflow: hidden;
 
   &:hover {
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 25px ${CSIColors.primary.main}40;
   }
 
   &:disabled {
@@ -155,7 +156,7 @@ const Button = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, ${CSIColors.neutral.white}20, transparent);
     transition: left 0.5s ease;
   }
 

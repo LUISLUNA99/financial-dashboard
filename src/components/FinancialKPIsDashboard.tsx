@@ -334,11 +334,11 @@ const FinancialKPIsDashboard: React.FC = () => {
           type: 'line',
           data: realIncomeValues,
           lineStyle: {
-            color: '#22c55e',
+            color: '#1B365C',
             width: 3
           },
           itemStyle: {
-            color: '#22c55e',
+            color: '#1B365C',
             borderWidth: 2,
             borderColor: '#ffffff'
           },
@@ -352,11 +352,11 @@ const FinancialKPIsDashboard: React.FC = () => {
               colorStops: [
                 {
                   offset: 0,
-                  color: 'rgba(34, 197, 94, 0.3)'
+                  color: 'rgba(27, 54, 92, 0.3)'
                 },
                 {
                   offset: 1,
-                  color: 'rgba(34, 197, 94, 0.05)'
+                  color: 'rgba(27, 54, 92, 0.05)'
                 }
               ]
             }
@@ -368,11 +368,11 @@ const FinancialKPIsDashboard: React.FC = () => {
           type: 'line',
           data: grossMarginValues,
           lineStyle: {
-            color: '#3b82f6',
+            color: '#C8102E',
             width: 3
           },
           itemStyle: {
-            color: '#3b82f6',
+            color: '#C8102E',
             borderWidth: 2,
             borderColor: '#ffffff'
           },
@@ -386,11 +386,11 @@ const FinancialKPIsDashboard: React.FC = () => {
               colorStops: [
                 {
                   offset: 0,
-                  color: 'rgba(59, 130, 246, 0.3)'
+                  color: 'rgba(200, 16, 46, 0.3)'
                 },
                 {
                   offset: 1,
-                  color: 'rgba(59, 130, 246, 0.05)'
+                  color: 'rgba(200, 16, 46, 0.05)'
                 }
               ]
             }
@@ -402,11 +402,11 @@ const FinancialKPIsDashboard: React.FC = () => {
           type: 'line',
           data: ebitValues,
           lineStyle: {
-            color: '#f59e0b',
+            color: '#D4AF37',
             width: 3
           },
           itemStyle: {
-            color: '#f59e0b',
+            color: '#D4AF37',
             borderWidth: 2,
             borderColor: '#ffffff'
           },
@@ -420,11 +420,11 @@ const FinancialKPIsDashboard: React.FC = () => {
               colorStops: [
                 {
                   offset: 0,
-                  color: 'rgba(245, 158, 11, 0.3)'
+                  color: 'rgba(212, 175, 55, 0.3)'
                 },
                 {
                   offset: 1,
-                  color: 'rgba(245, 158, 11, 0.05)'
+                  color: 'rgba(212, 175, 55, 0.05)'
                 }
               ]
             }

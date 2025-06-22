@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/Card';
 import { financialDataService } from '../services/financialDataService';
 import Button from './ui/Button';
+import { CSIColors } from '../styles/CSITheme';
 
 const RadarChartContainer = styled.div`
   width: 100%;
@@ -26,7 +27,7 @@ const RadarCard = styled(Card)`
 `;
 
 const RadarHeader = styled(CardHeader)`
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  background: linear-gradient(135deg, ${CSIColors.primary.main} 0%, ${CSIColors.secondary.main} 100%);
   color: white;
   padding: 1.5rem;
   display: flex;
@@ -150,7 +151,7 @@ const RadarChart: React.FC = () => {
 
       chartInstance.current = echarts.init(chartRef.current);
 
-      const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+      const colors = ['#1B365C', '#C8102E', '#D4AF37', '#2B4F7D', '#E8415A', '#CD7F32'];
       
       const option = {
         tooltip: {
@@ -180,12 +181,12 @@ const RadarChart: React.FC = () => {
           radius: '70%',
           center: ['50%', '45%'],
           indicator: [
-            { name: 'Ingresos 2025', max: 100, color: '#ff6b6b' },
-            { name: 'Crecimiento', max: 100, color: '#4ecdc4' },
-            { name: 'Ingresos 2024', max: 100, color: '#45b7d1' },
-            { name: 'Porcentaje Anual', max: 100, color: '#96ceb4' },
-            { name: 'Eficiencia', max: 100, color: '#feca57' },
-            { name: 'Rentabilidad', max: 100, color: '#ff9ff3' }
+            { name: 'Ingresos 2025', max: 100, color: '#1B365C' },
+            { name: 'Crecimiento', max: 100, color: '#C8102E' },
+            { name: 'Ingresos 2024', max: 100, color: '#D4AF37' },
+            { name: 'Porcentaje Anual', max: 100, color: '#2B4F7D' },
+            { name: 'Eficiencia', max: 100, color: '#E8415A' },
+            { name: 'Rentabilidad', max: 100, color: '#CD7F32' }
           ],
           name: {
             textStyle: {

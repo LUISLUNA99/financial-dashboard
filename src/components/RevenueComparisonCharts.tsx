@@ -264,10 +264,10 @@ const RevenueComparisonCharts: React.FC = () => {
           label: 'Cambio Porcentual (%)',
           data: projectsWithChange.map(item => item.changePercentage),
           backgroundColor: projectsWithChange.map(item => 
-            item.changePercentage > 0 ? 'rgba(34, 197, 94, 0.6)' : 'rgba(239, 68, 68, 0.6)'
+            item.changePercentage > 0 ? 'rgba(27, 54, 92, 0.6)' : 'rgba(200, 16, 46, 0.6)'
           ),
           borderColor: projectsWithChange.map(item => 
-            item.changePercentage > 0 ? 'rgb(34, 197, 94)' : 'rgb(239, 68, 68)'
+            item.changePercentage > 0 ? 'rgb(27, 54, 92)' : 'rgb(200, 16, 46)'
           ),
           borderWidth: 1,
         },
